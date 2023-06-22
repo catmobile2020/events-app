@@ -161,3 +161,59 @@ footer{
   }
 }
 // End overlay-nav
+
+// start feature-showcase
+.feature-showcase{
+  .feature-showcase-gray-section{
+    background-color: #ECEFF1;
+    padding: 30px;
+}
+.accounting-section{
+  max-height: 800px;
+ 
+}
+  .img-overlay{
+    max-width: 300px;
+    border-radius: 30px;
+  }
+  li {
+     color: #3BE692;
+    }
+  .feature-describtion{
+      color: #455A64; 
+      font-size: 14px;
+  }
+  .title{
+      color: #11369C;
+      font-size: 34px;
+      font-weight: 700;
+  }
+  .feature-title{
+      color:  #37474F;
+      font-size: 16px;
+      font-weight: 600;
+  }
+  .free-demo-section{
+    background-color: #ECEFF1;
+    background-image: url("../Photos/features/feature11.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding: 30px;
+    margin: 30px;
+    max-width: 80%;
+    border-radius: 20px;
+    margin: 0 auto; /* Center the div horizontally */
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+ 
+  }
+  .free-demo-content{
+    margin: 33px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+// End feature-showcase
