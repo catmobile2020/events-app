@@ -1,0 +1,163 @@
+@import './variables.scss';
+
+
+// start Global Styles
+* {
+  box-sizing: border-box;
+}
+.w-50 {
+  width: 50% !important;
+}
+.w-25 {
+  width: 25% !important;
+}
+.w-75 {
+  width: 75% !important;
+}
+.w-80 {
+  width: 80% !important;
+}
+.w-90 {
+  width: 90% !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+h1 {
+  font-size: 60px;
+}
+h2 {
+  font-size: 48px;
+}
+h3 {
+  font-size: 34px;
+}
+h4 {
+  font-size: 24px;
+}
+h5 {
+  font-size: 20px;
+}
+p{
+  font-size: 16px;
+}
+.subtitle1{
+  font-size: 16px;
+}
+.subtitle2{
+  font-size: 14px;
+}
+.body1{
+  font-size: 16px;
+}
+.body2{
+  font-size: 14px;
+}
+.caption{
+  font-size: 12px;
+}
+.overline{
+  font-size: 10px;
+}
+.gradiant{
+  background: rgb(59,230,146);
+background: linear-gradient(90deg, rgba(59,230,146,1) 0%, rgba(72,129,255,1) 100%);
+}
+// End Global Styles
+
+// Start Navbar
+.v-app-bar{
+  height: 80px !important;
+  z-index: 100;
+  .v-toolbar__content{
+    height: 80px !important;
+  }
+  .logo{
+    width: 150px;
+  }
+}
+// End Navbar
+
+// Start v-Main
+.v-main{
+  padding: 0px 0px 0px !important;
+}
+// End V-main
+// Start Footer
+footer{
+  padding: 40px 0 !important;
+  background-color: #263238 !important;
+  color: #cfd8dc !important;
+  position: relative !important;
+  a{
+    color: #cfd8dc !important;
+    .theme--light.v-btn{
+      color: #cfd8dc !important;
+    }
+  }
+  .socialMedia{
+    .v-btn{
+      color: #cfd8dc !important;
+    }
+  }
+  .logo{
+    width: 150px;
+  }
+  .hr{
+    width: 100%;
+    height: 1px;
+    background-color: #cfd8dc;
+    margin-top: 30px;
+  }
+}
+// End Footer
+
+// Start headerComponent
+.headerComponent{
+  height: 100vh;
+  z-index: 101 !important;
+  position: relative;
+  .header-content{
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    img{
+      width: 100%;
+      max-height: 100vh;
+    }
+    .text{
+      position: absolute;
+      color: #fff;
+      top: 35%;
+      width: 50%;
+      .v-btn{
+        color: #fff;
+      }
+    }
+  }
+}
+// End headerComponent
+
+// start overlay-nav
+.overlay-nav{
+  background-color: transparent !important;
+  .v-app-bar{
+    height: 80px !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: unset !important;
+    border-color: unset !important;
+    .v-toolbar__content{
+      height: 80px !important;
+    }
+    .logo{
+      width: 150px;
+    }
+      .theme--light.v-btn{
+        color: #fff;
+      }
+  }
+}
+// End overlay-nav
