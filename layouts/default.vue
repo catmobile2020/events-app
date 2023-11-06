@@ -2,25 +2,21 @@
   <v-app dark>
     <navbarComponent />
     <v-main>
-        <Nuxt />
+      <Nuxt />
     </v-main>
-  <footerComponent />
   </v-app>
 </template>
 
 <script>
-import navbarComponent from '../components/layout/navbar.vue'
-import footerComponent from '../components/layout/footer.vue'
+import navbarComponent from "../components/layout/navbar.vue";
 
 export default {
-  name: 'DefaultLayout',
+  name: "DefaultLayout",
   components: {
     navbarComponent,
-    footerComponent
   },
-  data () {
-    return {
-    }
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>

@@ -18,11 +18,6 @@ export default {};
 <style lang="scss">
 .mainHeader {
   .image {
-    background-image: url("../../assets/Photos/features/features_header.png");
-    width: 100%;
-    height: 400px;
-    background-size: cover;
-    background-repeat: no-repeat;
     .minHeaderOverlay {
       //   background-color: #00000094 !important;
       height: 100%;

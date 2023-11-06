@@ -1,18 +1,18 @@
 <template>
   <div class="homepage">
     <section class="header-section">
-      <Home />
+      <Settings />
     </section>
   </div>
 </template>
 
 <script>
-import Home from "../components/homepage/home.vue";
+import Settings from "../../components/dashSettings/dashSettings.vue";
 
 export default {
   name: "home",
   components: {
-    Home,
+    Settings,
   },
 };
 </script>

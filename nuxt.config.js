@@ -3,11 +3,11 @@ import colors from "vuetify/es5/util/colors";
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  target: "static",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - property-net",
-    title: "property-net",
+    titleTemplate: "%s - Events",
+    title: "Events",
     htmlAttrs: {
       lang: "en",
     },
@@ -17,18 +17,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href:
-          "https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css",
-        referrerpolicy: "no-referrer",
-        integrity:
-          "sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==",
-        crossorigin: "anonymous",
-      },
-    ],
+    link: [{ rel: "icon", type: "image/png", href: "/your-custom-icon.png" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

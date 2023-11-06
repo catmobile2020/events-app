@@ -1,79 +1,102 @@
 <template>
   <div>
-    <v-app-bar fixed app>
-      <v-container>
-        <v-row>
-          <v-toolbar-title>
-            <img
-              class="logo"
-              src="@/assets/Photos/general/navbar2.png"
-              alt="logo"
-            />
-          </v-toolbar-title>
-          <v-spacer />
-          <nuxt-link to="/feature-showcase" class="link">
-            <v-btn text class="navTltle">{{ $t("navbar.feature") }} </v-btn>
-          </nuxt-link>
-          <nuxt-link to="/categories" class="link">
-            <v-btn text class="navTltle"> {{ $t("navbar.aboutus") }} </v-btn>
-          </nuxt-link>
-          <nuxt-link to="/products" class="link">
-            <v-btn text class="navTltle"> {{ $t("navbar.whoWeServe") }} </v-btn>
-          </nuxt-link>
-          <nuxt-link to="/products" class="link">
-            <v-btn text class="navTltle"> {{ $t("navbar.FAQ") }} </v-btn>
-          </nuxt-link>
-          <nuxt-link to="/products" class="link">
-            <v-btn text class="navTltle"> {{ $t("navbar.contactUs") }} </v-btn>
-          </nuxt-link>
-          <v-spacer />
-          <div
-            v-for="locale in availableLocales"
-            :key="locale.iso"
-            @click="
-              $i18n.setLocale(locale.code), ($vuetify.rtl = !$vuetify.rtl)
-            "
-          >
-            <v-btn
-              text
-              v-if="locale.code === 'en'"
-              class="eachIconColor d-flex align-center"
-              :class="locale.code === 'ar' ? 'text-right' : 'text-left'"
-            >
-              EN
-            </v-btn>
-            <v-btn
-              text
-              v-if="locale.code === 'ar'"
-              class="eachIconColor d-flex align-center"
-              :class="locale.code === 'ar' ? 'text-right' : 'text-left'"
-            >
-              AR
-            </v-btn>
-          </div>
-          <v-btn text>
-            <v-icon> mdi-magnify </v-icon>
-          </v-btn>
-        </v-row>
-      </v-container>
-    </v-app-bar>
+    <div class="navContainer">
+      <v-row>
+        <v-spacer />
+
+        <nuxt-link to="/" class="mainLink">
+          <v-btn text class="navTltle">Dashboard </v-btn>
+        </nuxt-link>
+
+        <nuxt-link to="/content" class="mainLink">
+          <v-btn text class="navTltle">Content </v-btn>
+        </nuxt-link>
+        <nuxt-link to="/engagement" class="mainLink">
+          <v-btn text class="navTltle"> Engagement </v-btn>
+        </nuxt-link>
+        <nuxt-link to="/users" class="mainLink">
+          <v-btn text class="navTltle"> Users </v-btn>
+        </nuxt-link>
+        <nuxt-link to="/dashSettings" class="mainLink">
+          <v-btn text class="navTltle"> Settings </v-btn>
+        </nuxt-link>
+
+        <v-spacer />
+        <v-btn text>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+      </v-row>
+    </div>
+    <div class="subTitles">
+      <div v-if="isDashboardActive || showSublinks">
+        <nuxt-link to="/dashboard/sublink1" class="link">Overview</nuxt-link>
+        <nuxt-link to="/dashboard/sublink2" class="link">Analytics</nuxt-link>
+        <nuxt-link to="/dashboard/sublink2" class="link"
+          >Session insights</nuxt-link
+        >
+        <nuxt-link to="/dashboard/sublink2" class="link"
+          >Partner insights</nuxt-link
+        >
+        <nuxt-link to="/dashboard/sublink2" class="link">Networking</nuxt-link>
+      </div>
+      <div v-if="isContentActive || showSublinks">
+        <nuxt-link to="/content/sublink1" class="link">Schedule</nuxt-link>
+        <nuxt-link to="/content/sublink2" class="link">Speakers</nuxt-link>
+        <nuxt-link to="/content/sublink2" class="link">Workshops</nuxt-link>
+        <nuxt-link to="/content/sublink2" class="link">Custom menu</nuxt-link>
+        <nuxt-link to="/content/sublink2" class="link">Partners</nuxt-link>
+      </div>
+      <div v-if="isEngagementActive || showSublinks">
+        <nuxt-link to="/engagement/sublink1" class="link">Newsfeed</nuxt-link>
+        <nuxt-link to="/engagement/sublink2" class="link">Socials</nuxt-link>
+        <nuxt-link to="/engagement/sublink2" class="link"
+          >Questions&Polls</nuxt-link
+        >
+      </div>
+      <div v-if="isUsersActive || showSublinks">
+        <nuxt-link to="/users/sublink1" class="link"> All </nuxt-link>
+        <nuxt-link to="/users/sublink2" class="link"> Attendees </nuxt-link>
+        <nuxt-link to="/users/sublink2" class="link"> Moderators </nuxt-link>
+        <nuxt-link to="/users/sublink2" class="link"> Admins </nuxt-link>
+      </div>
+      <div v-if="isSettingsActive || showSublinks">
+        <nuxt-link to="/dashSettings/sublink1" class="link">Event</nuxt-link>
+        <nuxt-link to="/dashSettings/sublink2" class="link">Features</nuxt-link>
+        <nuxt-link to="/dashSettings/sublink2" class="link">Branding</nuxt-link>
+        <nuxt-link to="/dashSettings/sublink2" class="link">Website</nuxt-link>
+        <nuxt-link to="/dashSettings/sublink2" class="link"
+          >Integrations</nuxt-link
+        >
+        <nuxt-link to="/dashSettings/sublink2" class="link">General</nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isDashboardActive: true,
+      isContentActive: false,
+      isEngagementActive: false,
+      isUsersActive: false,
+      isSettingsActive: false,
+      showSublinks: false,
+    };
   },
-  mounted() {
-    this.$nextTick(() => {
-      // Set RTL Direction
-      this.$vuetify.rtl = this.$i18n.locale === "ar";
-    });
+  methods: {
+    toggleSublinks() {
+      this.showSublinks = !this.showSublinks;
+    },
   },
-  computed: {
-    availableLocales() {
-      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale);
+  watch: {
+    $route(to, from) {
+      this.isDashboardActive = to.path === "/";
+      this.isContentActive = to.path === "/content";
+      this.isEngagementActive = to.path === "/engagement";
+      this.isUsersActive = to.path === "/users";
+      this.isSettingsActive = to.path === "/dashSettings";
     },
   },
 };

@@ -1,18 +1,18 @@
 <template>
   <div class="homepage">
     <section class="header-section">
-      <Home />
+      <Users />
     </section>
   </div>
 </template>
 
 <script>
-import Home from "../components/homepage/home.vue";
+import Users from "../../components/users/users.vue";
 
 export default {
   name: "home",
   components: {
-    Home,
+    Users,
   },
 };
 </script>
