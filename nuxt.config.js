@@ -1,6 +1,15 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: "dashboard-analytics",
+        path: "/dashboard/analytics",
+        component: resolve(__dirname, "pages/dashboard/analytics.vue"),
+      });
+    },
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   target: "static",
@@ -52,20 +61,20 @@ export default {
     imgURL: "",
     // proxy: true
   },
-  i18n: {
-    // parsePages: false,
-    locales: [
-      { code: "en", iso: "en-US", file: "en.js" },
-      { code: "ar", iso: "ar-EG", file: "ar.js" },
-    ],
-    defaultLocale: "en",
-    strategy: "prefix",
-    lazy: true,
-    langDir: "locales/",
-    vueI18n: {
-      fallbackLocale: "en",
-    },
-  },
+  // i18n: {
+  //   // parsePages: false,
+  //   locales: [
+  //     { code: "en", iso: "en-US", file: "en.js" },
+  //     { code: "ar", iso: "ar-EG", file: "ar.js" },
+  //   ],
+  //   defaultLocale: "en",
+  //   strategy: "prefix",
+  //   lazy: true,
+  //   langDir: "locales/",
+  //   vueI18n: {
+  //     fallbackLocale: "en",
+  //   },
+  // },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

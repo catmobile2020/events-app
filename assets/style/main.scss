@@ -197,6 +197,39 @@ footer {
     }
   }
 }
+.mainLink {
+  position: relative;
+  text-decoration: none;
+}
+
+.mainLink .navTitle {
+  color: #333;
+}
+
+.nuxt-link-exact-active ::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 7px solid #dbdbdb;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nuxt-link-exact-active ::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 7px solid white;
+  bottom: -24px;
+  left: calc(50% + -6px);
+  z-index: 999;
+}
 // End overlay-nav
 
 // start feature-showcase
