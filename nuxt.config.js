@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from "vuetify/es5/util/colors";
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -6,39 +6,36 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - property-net',
-    title: 'property-net',
+    titleTemplate: "%s - property-net",
+    title: "property-net",
     htmlAttrs: {
-      lang: 'en'
+      lang: "en",
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" },
+      { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
         href:
           "https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css",
-          referrerpolicy: "no-referrer",
-          integrity: "sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==",
-          crossorigin: "anonymous"
+        referrerpolicy: "no-referrer",
+        integrity:
+          "sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==",
+        crossorigin: "anonymous",
       },
-    ]
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    "~/assets/style/main.scss"
-  ],
+  css: ["~/assets/style/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: "@/plugins/axios" },
-  ],
+  plugins: [{ src: "@/plugins/axios" }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -46,17 +43,17 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
+    "@nuxtjs/vuetify",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
 
   modules: [
-        // https://go.nuxtjs.dev/axios
-        "@nuxtjs/axios",
-        // https://go.nuxtjs.dev/pwa
-        "@nuxtjs/pwa",
-        "nuxt-i18n",
+    // https://go.nuxtjs.dev/axios
+    "@nuxtjs/axios",
+    // https://go.nuxtjs.dev/pwa
+    "@nuxtjs/pwa",
+    "nuxt-i18n",
   ],
   axios: {
     // http: process.env.NODE_ENV === "development",
@@ -83,7 +80,7 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/style/variables.scss'],
+    customVariables: ["~/assets/style/variables.scss"],
     theme: {
       dark: false,
       themes: {
@@ -94,13 +91,12 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
+          success: colors.green.accent3,
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
-}
+  build: {},
+};
