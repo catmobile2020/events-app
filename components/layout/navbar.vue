@@ -94,10 +94,10 @@ export default {
   watch: {
     $route(to, from) {
       this.isDashboardActive = to.path === "/";
-      this.isContentActive = to.path === "/content";
-      this.isEngagementActive = to.path === "/engagement";
-      this.isUsersActive = to.path === "/users";
-      this.isSettingsActive = to.path === "/dashSettings";
+      this.isContentActive = to.path.startsWith("/content");
+      this.isEngagementActive = to.path.startsWith("/engagement");
+      this.isUsersActive = to.path.startsWith("/users");
+      this.isSettingsActive = to.path.startsWith("/dashSettings");
     },
   },
 };
