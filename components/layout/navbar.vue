@@ -5,7 +5,7 @@
         <v-spacer />
 
         <nuxt-link to="/" class="mainLink">
-          <v-btn text class="navTltle">Dashboard </v-btn>
+          <v-btn text class="navTltle">Dashboard new </v-btn>
         </nuxt-link>
 
         <nuxt-link to="/content" class="mainLink">
@@ -29,7 +29,7 @@
     </div>
     <div class="subTitles">
       <div v-if="isDashboardActive || showSublinks">
-        <nuxt-link to="/" class="link">Overview fdsddd</nuxt-link>
+        <nuxt-link to="/" class="link">Overview </nuxt-link>
         <nuxt-link to="/dashboard/analytics" class="link">Analytics</nuxt-link>
         <nuxt-link to="/dashboard/sublink2" class="link"
           >Session insights</nuxt-link
@@ -37,9 +37,7 @@
         <nuxt-link to="/dashboard/sublink2" class="link"
           >Partner insights</nuxt-link
         >
-        <nuxt-link to="/dashboard/sublink2" class="link"
-          >Networkingdeed</nuxt-link
-        >
+        <nuxt-link to="/dashboard/sublink2" class="link">Networking</nuxt-link>
         {{ isDashboardActive }}
       </div>
       <div v-if="isContentActive || showSublinks">
