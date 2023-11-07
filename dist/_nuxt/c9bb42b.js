@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{452:function(o,t,e){"use strict";e.r(t),t.default={navbar:{feature:"الخصائص",aboutus:"عن الشركة",whoWeServe:"التحديات",FAQ:"الاسئلة الشائعة",contactUs:"اتصل بنا"},footer:{copyright:"حقوق النشر",allRights:"بروبرتي نت ، جميع الحقوق محفوظة."}}}}]);
