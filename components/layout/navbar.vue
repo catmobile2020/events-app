@@ -29,7 +29,7 @@
     </div>
     <div class="subTitles">
       <div v-if="isDashboardActive || showSublinks">
-        <nuxt-link to="/" class="link">Overview</nuxt-link>
+        <nuxt-link to="/" class="link">Overview fdsddd</nuxt-link>
         <nuxt-link to="/dashboard/analytics" class="link">Analytics</nuxt-link>
         <nuxt-link to="/dashboard/sublink2" class="link"
           >Session insights</nuxt-link
