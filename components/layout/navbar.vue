@@ -37,7 +37,9 @@
         <nuxt-link to="/dashboard/sublink2" class="link"
           >Partner insights</nuxt-link
         >
-        <nuxt-link to="/dashboard/sublink2" class="link">Networking</nuxt-link>
+        <nuxt-link to="/dashboard/sublink2" class="link"
+          >Networkingdeed</nuxt-link
+        >
         {{ isDashboardActive }}
       </div>
       <div v-if="isContentActive || showSublinks">
