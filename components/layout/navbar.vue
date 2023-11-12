@@ -22,9 +22,36 @@
         </nuxt-link>
 
         <v-spacer />
-        <v-btn text>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+        <v-menu :close-on-content-click="false" bottom offset-y :left="true">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="conUserbtn"
+              v-bind="attrs"
+              v-on="on"
+              :ripple="false"
+              text
+            >
+              <div class="conOfuserControl d-flex align-center">
+                <div class="conOfUserInfo mr-2">
+                  <div class="userName"></div>
+                  <div class="userTitle"></div>
+                </div>
+                <div class="conUserIcon"></div>
+              </div>
+
+              <v-icon> mdi-chevron-down </v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item class="conOfListUser" @click="logOut()">
+              <v-list-item-icon>
+                <v-icon class="iconStyle">mdi-logout</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </v-row>
     </div>
     <div class="subTitles">
@@ -90,6 +117,16 @@ export default {
     },
     isActiveCategory(category) {
       return this.activeCategory === category;
+    },
+    async logOut() {
+      const data = await this.$axios.$post("/auth/logout");
+      console.log("data", data);
+      if (data.message === "Successfully logged out") {
+        localStorage.removeItem("token");
+        localStorage.removeItem("name");
+        localStorage.removeItem("userData");
+        this.$router.push("/");
+      }
     },
   },
   watch: {

@@ -7,7 +7,7 @@
           ref="map"
           @click="onMapClick"
           :zoom="zoom"
-          style="height: 500px; width: 100%"
+          style="height: 300px; width: 100%"
           :center="[
             position.lat || userLocation.lat || defaultLocation.lat,
             position.lng || userLocation.lng || defaultLocation.lng,
@@ -17,7 +17,6 @@
             :url="tileProvider.url"
             :attribution="tileProvider.attribution"
           />
-          <l-geosearch :options="geoSearchOptions"></l-geosearch>
           <l-marker
             class="user-location"
             v-if="userLocation.lat && userLocation.lng"

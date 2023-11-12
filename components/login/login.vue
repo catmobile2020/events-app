@@ -67,7 +67,7 @@
       color="red"
       shaped
       top
-      center
+      right
       :timeout="timeout"
     >
       {{ errorMessage }}
@@ -98,7 +98,6 @@ export default {
     async doLogin() {
       try {
         const data = await this.$axios.$post("/auth/login", this.form);
-        console.log("data", data);
         if (data.access_token) {
           localStorage.setItem("token", data.token_type + data.access_token);
           this.$router.push("/createEvent/createEvent");

@@ -41,15 +41,21 @@
                   </div>
                 </div>
                 <div>
-                  <v-icon @click="editEvent(item)" class="px-2"
+                  <v-icon @click="editEvent(item)" color="#42bba2" class="px-2"
                     >mdi-pencil</v-icon
                   >
-                  <v-icon @click="openDeleteEventDailoge(item)" class="px-2"
+                  <v-icon
+                    @click="
+                      selectedEvent = item;
+                      confirmDialoge = true;
+                    "
+                    class="px-2"
+                    color="red"
                     >mdi-delete</v-icon
                   >
                 </div>
               </div>
-              <div class="created">{{ item.created_at }}</div>
+              <div class="created">{{ item.start }}</div>
             </div>
           </v-card>
         </v-col>
@@ -73,7 +79,7 @@
                 </div>
               </v-col>
               <v-col cols="12">
-                <v-radio-group v-model="eventData.type">
+                <v-radio-group v-model="eventData.type" row>
                   <v-radio label="hybrid" value="hybrid"></v-radio>
                   <v-radio label="virtual" value="virtual"></v-radio>
                 </v-radio-group>
@@ -126,21 +132,32 @@
         </v-card-title>
         <v-card-text class="textConfirm"
           >Are you sure you want to delete this event ?
-          {{ item.id }}</v-card-text
-        >
+        </v-card-text>
 
         <v-card-actions class="pb-7">
           <v-spacer></v-spacer>
           <v-btn class="btnCancel" tile @click.stop="confirmDialoge = false"
             >Cancel</v-btn
           >
-          <v-btn class="btnPrimaryOrg" tile @click="deleteEvent(eventId)"
+          <v-btn class="btnPrimaryOrg" @click="deleteEvent()" tile
             >Confirm</v-btn
           >
+
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-snackbar
+      v-model="errorSnackbar"
+      color="red"
+      shaped
+      top
+      right
+      :timeout="timeout"
+    >
+      {{ errorMessage }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -177,7 +194,8 @@ export default {
         latitude: "",
         longitude: "",
       },
-      item: { id: "" },
+      selectedEvent: null,
+
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
@@ -210,7 +228,6 @@ export default {
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       },
       zoom: 18,
-
       address: [
         {
           lat: null,
@@ -219,6 +236,7 @@ export default {
       ],
       events: [],
       eventId: "",
+      eventIdToDelete: null,
     };
   },
   computed: {},
@@ -230,8 +248,10 @@ export default {
         this.showDialog = false;
         this.$router.push("/content/schedule");
       } catch (error) {
-        if (error.response && error.response.data) {
-          const errorData = error.response.data.error;
+        if (error && error.data) {
+          const errorData = error.data.error;
+          console.error("errorData", this.errorData);
+
           const errorMessages = [];
           for (const field in errorData) {
             if (Array.isArray(errorData[field])) {
@@ -242,20 +262,24 @@ export default {
           }
           this.errorSnackbar = true;
           this.errorMessage = errorMessages.join("\n");
-          console.error("Registration failed:", this.errorMessage);
+          console.error("this.errorMessage", this.errorMessage);
         } else {
-          console.error("Registration failed:", error.message);
+          console.error("error.message", error.data.error);
           this.errorMessage = "Registration failed. Please try again later.";
         }
       }
     },
     async eventEdited() {
       try {
-        const data = await this.$axios.$put("/admin/events", this.eventData);
+        const data = await this.$axios.$put(
+          `/admin/events/${this.selectedEvent.id}`,
+          this.eventData
+        );
         this.showDialog = false;
+        this.getEventsData();
       } catch (error) {
-        if (error.response && error.response.data) {
-          const errorData = error.response.data.error;
+        if (error && error.data) {
+          const errorData = error.data.error;
           const errorMessages = [];
           for (const field in errorData) {
             if (Array.isArray(errorData[field])) {
@@ -266,14 +290,14 @@ export default {
           }
           this.errorSnackbar = true;
           this.errorMessage = errorMessages.join("\n");
-          console.error("Registration failed:", this.errorMessage);
         } else {
-          console.error("Registration failed:", error.message);
-          this.errorMessage = "Registration failed. Please try again later.";
+          console.error("error.message", error.data.error);
         }
       }
     },
     editEvent(item) {
+      this.selectedEvent = item;
+
       this.isEditing = true;
       console.log("item", item);
       this.eventData = {
@@ -299,22 +323,16 @@ export default {
         this.formItem = Object.assign({}, this.defaultItem);
       });
     },
-    openDeleteEventDailoge(item) {
-      console.log("item", item);
-      let eventId = item.id;
-      console.log("eventId", eventId);
 
-      this.confirmDialoge = true;
-    },
-
-    async deleteEvent(eventId) {
-      console.log("eventId", eventId);
-
+    async deleteEvent() {
       try {
-        await this.$axios.delete(`admin/events/${eventId}`);
-        this.getEventsData();
+        if (this.selectedEvent) {
+          await this.$axios.$delete(`/admin/events/${this.selectedEvent.id}`);
+          this.confirmDialoge = false;
+          this.getEventsData();
+        }
       } catch (error) {
-        console.error("Error deleting event:", error);
+        console.error("Deletion failed:", error.message);
       }
     },
     async getEventsData() {
@@ -358,6 +376,13 @@ export default {
     dialogProject(val) {
       val || this.closeProjectModal();
     },
+  },
+  head() {
+    return {
+      title: "events",
+      rel: "stylesheet",
+      href: "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css",
+    };
   },
 };
 </script>

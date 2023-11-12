@@ -7,7 +7,6 @@
             <div class="loginForm p-4">
               <v-col cols="12" class="d-flex justify-space-between">
                 <h5>{{ events.name }}</h5>
-                <v-btn class="btn-green">upgrade</v-btn>
               </v-col>
               <v-col cols="12 pb-2">Your plan: {{ events.type }}</v-col>
             </div>
