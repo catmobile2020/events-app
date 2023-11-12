@@ -1,6 +1,6 @@
 {
-  "name": "property-net",
-  "short_name": "property-net",
+  "name": "events-app",
+  "short_name": "events-app",
   "description": "## Build Setup",
   "icons": [],
   "start_url": "/?standalone=true",
