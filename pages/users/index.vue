@@ -10,7 +10,7 @@
 import Users from "../../components/users/users.vue";
 
 export default {
-  name: "home",
+  name: "LogIn",
   components: {
     Users,
   },

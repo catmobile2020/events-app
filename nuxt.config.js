@@ -1,15 +1,12 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: "dashboard-analytics",
-        path: "/dashboard/analytics",
-        component: resolve(__dirname, "pages/dashboard/analytics.vue"),
-      });
+  routes: [
+    {
+      path: "/dashboard/overview/:id",
+      component: "~/pages/dashboard/overview/_id.vue",
     },
-  },
+  ],
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
   target: "static",
@@ -57,8 +54,8 @@ export default {
     // http: process.env.NODE_ENV === "development",
     // baseURL: "https://api.vyahealthcare.sa/api/v1/",
     // imgURL: "https://api.vyahealthcare.sa/",
-    baseURL: "",
-    imgURL: "",
+    baseURL: "https://events.cat-sw.com/api/",
+    imgURL: "https://events.cat-sw.com/api/",
     // proxy: true
   },
   // i18n: {

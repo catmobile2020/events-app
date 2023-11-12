@@ -119,7 +119,7 @@ p {
 // Start v-Main
 .v-main {
   // padding: 0px 0px 0px !important;
-  margin-top: 10px !important;
+  // margin-top: 10px !important;
   background-color: #f5f4f4;
 }
 // End V-main
@@ -235,52 +235,12 @@ footer {
 }
 // End overlay-nav
 
-// start feature-showcase
-.feature-showcase {
-  .feature-showcase-gray-section {
-    background-color: #eceff1;
-    padding: 30px;
-  }
-  .accounting-section {
-    max-height: 800px;
-  }
-  .img-overlay {
-    max-width: 300px;
-    border-radius: 30px;
-  }
-  li {
-    color: #3be692;
-  }
-  .feature-describtion {
-    color: #455a64;
-    font-size: 14px;
-  }
-  .title {
-    color: #11369c;
-    font-size: 34px;
-    font-weight: 700;
-  }
-  .feature-title {
-    color: #37474f;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .free-demo-content {
-    margin: 33px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-// End feature-showcase
 // strt home
 .loginForm {
   background: #ffffffd9;
   box-shadow: 0 5px 15px 1px #00000014 !important;
   border-radius: 10px !important;
-  padding: 10px;
+  padding: 10px !important;
 }
 .btn-green {
   color: #fff !important;
@@ -309,3 +269,49 @@ footer {
   color: #74788d !important;
 }
 // End analytics
+// start login
+
+.logForm {
+  background: #ffffffd9;
+  box-shadow: 0 5px 15px 1px #00000014 !important;
+  border-radius: 10px !important;
+  padding: 30px !important;
+}
+// End login
+//  start create event
+.conCard {
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #42bba2 !important;
+  border-radius: 10px !important;
+}
+.event-icon {
+  color: #fff !important;
+}
+.event-card {
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  border-radius: 10px !important;
+  background: rgb(92, 69, 93);
+  border-color: rgb(82, 59, 83);
+  position: relative;
+}
+.event-icon {
+  width: 30px;
+  border-radius: 50% !important;
+}
+.created {
+  position: absolute;
+  bottom: 0px;
+  padding: 10px;
+}
+//  end create event

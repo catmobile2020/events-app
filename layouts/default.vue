@@ -15,6 +15,7 @@ export default {
   components: {
     navbarComponent,
   },
+
   data() {
     return {};
   },

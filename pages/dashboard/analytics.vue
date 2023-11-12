@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Analytics from "../../components/homepage/analytics.vue";
+import Analytics from "../../components/dashboard/analytics.vue";
 
 export default {
   name: "analytics",

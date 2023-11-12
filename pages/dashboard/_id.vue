@@ -1,18 +1,18 @@
 <template>
   <div class="homepage">
     <section class="header-section">
-      <Content />
+      <Overview />
     </section>
   </div>
 </template>
 
 <script>
-import Content from "../../components/content/content.vue";
+import Overview from "../../components/dashboard/_id.vue";
 
 export default {
-  name: "home",
+  name: "verview",
   components: {
-    Content,
+    Overview,
   },
 };
 </script>

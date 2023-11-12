@@ -1,15 +1,15 @@
 <template>
   <v-container>
-    <div class="">
+    <div class="" v-if="events">
       <v-container>
         <v-row class="d-flex justify-center">
           <v-col md="5" cols="12">
             <div class="loginForm p-4">
               <v-col cols="12" class="d-flex justify-space-between">
-                <h5>My awesome event</h5>
+                <h5>{{ events.name }}</h5>
                 <v-btn class="btn-green">upgrade</v-btn>
               </v-col>
-              <v-col cols="12 pb-2">Your plan: Trial</v-col>
+              <v-col cols="12 pb-2">Your plan: {{ events.type }}</v-col>
             </div>
             <div class="loginForm mt-4 p-4">
               <v-col cols="12 pb-2">
@@ -128,3 +128,34 @@
     </div>
   </v-container>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      events: [],
+      id: this.$route.params.id,
+    };
+  },
+  components: {},
+  methods: {
+    async getEventsData(id) {
+      try {
+        const data = await this.$axios.$get(`/admin/events/${id}`);
+        this.events = data.data;
+        console.log("events", this.events);
+      } catch (error) {
+        console.error("Error fetching event details:", error);
+      }
+    },
+  },
+
+  created() {
+    // Check if this.$route.params.id is available
+    if (this.$route.params.id) {
+      this.id = this.$route.params.id;
+      console.log("ID:", this.id);
+      this.getEventsData(this.id);
+    }
+  },
+};
+</script>
